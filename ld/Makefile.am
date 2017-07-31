@@ -294,6 +294,7 @@ ALL_EMULATION_SOURCES = \
 	eelf32xstormy16.c \
 	eelf32xtensa.c \
 	eelf_i386.c \
+	eelf_i386_rpos.c \
 	eelf_i386_be.c \
 	eelf_i386_chaos.c \
 	eelf_i386_fbsd.c \
@@ -1332,6 +1333,10 @@ eelf32xtensa.c: $(srcdir)/emulparams/elf32xtensa.sh $(ELF_DEPS) \
 
 eelf_i386.c: $(srcdir)/emulparams/elf_i386.sh \
   $(ELF_X86_DEPS) $(srcdir)/scripttempl/elf.sc ${GEN_DEPENDS}
+
+eelf_i386_rpos.c: $(srcdir)/emulparams/elf_i386_rpos.sh \
+  $(ELF_DEPS) $(srcdir)/scripttempl/elf.sc ${GEN_DEPENDS}
+	${GENSCRIPTS} elf_i386_rpos "$(tdir_elf_i386_rpos)"
 
 eelf_i386_be.c: $(srcdir)/emulparams/elf_i386_be.sh \
   $(ELF_DEPS) $(srcdir)/scripttempl/elf.sc ${GEN_DEPENDS}

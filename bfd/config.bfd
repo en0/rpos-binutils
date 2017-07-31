@@ -345,6 +345,11 @@ case "${targ}" in
     ;;
 #endif /* BFD64 */
 
+  i[3-7]86-*-rpos*)
+    targ_defvec=i386_elf32_vec
+    targ_selvecs=
+    ;;
+
   am33_2.0-*-linux*)
     targ_defvec=am33_elf32_linux_vec
     ;;
