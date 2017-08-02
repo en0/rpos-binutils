@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-#export SYSROOT="$(readlink -f $(pwd)/../../..)"
-#export PREFIX="${SYSROOT}/usr"
-#export TARGET=i686-rpos
-#export PATH="${PREFIX}/bin:$PATH"
-
 abort() {
     MESSAGE=$1
     EXITCODE=$2
@@ -23,9 +18,8 @@ require_env() {
 }
 
 require_env "SYSROOT" "${SYSROOT}"
-require_env "PREFIX" "${PREFIX}"
+require_env "XPREFIX" "${XPREFIX}"
 require_env "TARGET" "${TARGET}"
-require_env "PATH" "${PATH}"
 
 rm -rf binutils-build
 mkdir binutils-build
@@ -33,7 +27,7 @@ cd binutils-build
 
 ../configure \
     --target=$TARGET \
-    --prefix=$PREFIX \
+    --prefix=$XPREFIX \
     --with-sysroot=${SYSROOT} \
     --disable-nls \
     --disable-werror && make && make install
